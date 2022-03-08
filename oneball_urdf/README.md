@@ -3,10 +3,11 @@ A package for ROS
 
 ##
 In a shell,
+```
 >> cd ~/catkin_ws
 >> catkin_make
 >> roscore
-
+```
 In another shell,
 >> roslaunch gazebo_ros empty_world.launch
 
