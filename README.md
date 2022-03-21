@@ -1,7 +1,7 @@
 # ME454_2022
 
-## Lecturer : Prof. Seungbum Koo (skoo at kaist.ac.kr)  
-## TA : Jeongseok Oh (dhwjdtjr0 at kaist.ac.kr) and Beomsu Shin (sbs0323 at kaist.ac.kr)  
+#### Lecturer : Prof. Seungbum Koo (skoo at kaist.ac.kr)  
+#### TA : Jeongseok Oh (dhwjdtjr0 at kaist.ac.kr) and Beomsu Shin (sbs0323 at kaist.ac.kr)  
 
 ## Packages for TA sessions  
 
