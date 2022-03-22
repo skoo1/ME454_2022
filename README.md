@@ -4,6 +4,15 @@
 
 ## Packages for TA sessions  
 
+### Installation
+'''
+>> cd ~/catkin_ws/src
+>> git clone https://github.com/skoo1/ME454_2022.git
+>> catkin_make
+>> source ~/catkin_ws/devel/setup.bash
+'''
+See the document (README.MD) in each weekly tutorial
+
 ### Week 2. oneball_urdf  
 Loading a sphere and throwing it using a service call  
 We can see that the dynamics works in Gazebo  
@@ -17,3 +26,5 @@ Loading minigames with ball and pin objects and fences
 We can see more sophiscated collision works even with meshed objects
 
 ### Week 5. pendulum
+Loading vertical and horizon pendulums to see their swing motions
+We can apply apply torque to a joint of pendulums
