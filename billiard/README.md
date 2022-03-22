@@ -12,6 +12,7 @@ In a shell,
 ```
 In another shell,
 ```
+>> source ~/catkin_ws/devel/setup.bash
 >> roslaunch billiard makeBilliard.launch
 ```
 In another shell,
