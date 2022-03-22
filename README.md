@@ -5,12 +5,12 @@
 ## Packages for TA sessions  
 
 ### Installation
-'''
+```
 >> cd ~/catkin_ws/src
 >> git clone https://github.com/skoo1/ME454_2022.git
 >> catkin_make
 >> source ~/catkin_ws/devel/setup.bash
-'''
+```
 See the document (README.MD) in each weekly tutorial
 
 ### Week 2. oneball_urdf  
