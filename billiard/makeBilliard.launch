@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+	<arg name="world_name" value="$(find billiard)/world/billiard.world"/>
+	</include>
+		
+	<param name="ball_param_1" command="cat $(find billiard)/urdf/ball1.urdf" />
+	<param name="ball_param_2" command="cat $(find billiard)/urdf/ball2.urdf" />
+	<param name="ball_param_3" command="cat $(find billiard)/urdf/ball3.urdf" />
+	<param name="ball_param_4" command="cat $(find billiard)/urdf/ball4.urdf" />
+	<param name="ball_param_5" command="cat $(find billiard)/urdf/ball5.urdf" />
+	<param name="ball_param_6" command="cat $(find billiard)/urdf/ball6.urdf" />
+	<param name="ball_param_0" command="cat $(find billiard)/urdf/ball0.urdf" />
+
+	<node name="ball_spawner_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param ball_param_1 -model ball_1 -x 0 -y 0 -z 0.491 -R 0"/>
+	<node name="ball_spawner_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param ball_param_2 -model ball_2 -x 0 -y -1 -z 0.491 -R 0"/>
+	<node name="ball_spawner_3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param ball_param_3 -model ball_3 -x 0 -y -2 -z 0.491 -R 0"/>
+	<node name="ball_spawner_4" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param ball_param_4 -model ball_4 -x 0.8 -y -0.5 -z 0.491 -R 0"/>
+	<node name="ball_spawner_5" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param ball_param_5 -model ball_5 -x 0.8 -y -1.5 -z 0.491 -R 0"/>
+	<node name="ball_spawner_6" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param ball_param_6 -model ball_6 -x 1.6 -y -1 -z 0.491 -R 0"/>
+
+	<node name="ball_spawner_0" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param ball_param_0 -model ball_0 -x 5 -y -1 -z 0.491 -R 0"/>
+
+	
+</launch>

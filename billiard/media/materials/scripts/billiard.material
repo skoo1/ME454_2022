@@ -1,0 +1,91 @@
+material red/three{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture red_3.jpg
+				scale 1 1
+			}
+		}
+	}
+}
+material green/six{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture green_6.png
+				scale 1 1
+			}
+		}
+	}
+}
+material blue/two{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture blue_2.jpg
+				scale 1 1
+			}
+		}
+	}
+}
+material orange/thirteen{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture orange_13.png
+				scale 1 1
+			}
+		}
+	}
+}
+material purple/twelve{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture purple_12.png
+				scale 1 1
+			}
+		}
+	}
+}
+material yellow/nine{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture yellow_9.png
+				scale 1 1
+			}
+		}
+	}
+}
+material black/eight{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture black_8.png
+				scale 1 1
+			}
+		}
+	}
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot name="ball1">
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <sphere radius="0.5"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="0.49"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="base_link_inertia">
+        <inertial>
+            <mass value="10"/>
+            <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.5"/>
+        </inertial>
+    </link>
+    <joint name="base_link_to_base_link_inertia" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_link_inertia"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+    </joint>
+
+<gazebo reference="base_link">
+	<material>
+	red/three
+	</material>
+</gazebo>
+
+</robot>

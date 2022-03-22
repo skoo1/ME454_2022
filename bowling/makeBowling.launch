@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+	<arg name="world_name" value="$(find bowling)/world/bowling.world"/>
+	</include>
+		
+	<param name="pin_param" command="cat $(find bowling)/urdf/pin.urdf" />
+	<param name="bowl_param" command="cat $(find bowling)/urdf/bowl.urdf" />
+
+	<node name="pin_spawner_1" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param pin_param -model pin_1 -x 0 -y 1 -z 0.005 -R 1.5708"/>
+	<node name="pin_spawner_2" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param pin_param -model pin_2 -x 0 -y -1 -z 0.005 -R 1.5708"/>
+	<node name="pin_spawner_3" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param pin_param -model pin_3 -x 0 -y -3 -z 0.005 -R 1.5708"/>
+	<node name="pin_spawner_4" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param pin_param -model pin_4 -x 1.0 -y 0 -z 0.005 -R 1.5708"/>
+	<node name="pin_spawner_5" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param pin_param -model pin_5 -x 1.0 -y -2 -z 0.005 -R 1.5708"/>
+	<node name="pin_spawner_6" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param pin_param -model pin_6 -x 2.0 -y -1 -z 0.005 -R 1.5708"/>
+
+	<node name="bowl_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param bowl_param -model bowl -x 15 -y -1 -z 1.001 -R 0"/>
+	
+
+	
+</launch>
