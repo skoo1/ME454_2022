@@ -7,6 +7,7 @@ In a shell,
 >> cd ~/catkin_ws
 >> export GAZEBO_RESOURCE_PATH=~/catkin_ws/src/billiard:$GAZEBO_RESOURCE_PATH
 >> catkin_make
+>> source ~/catkin_ws/devel/setup.bash
 >> roscore
 ```
 In another shell,
