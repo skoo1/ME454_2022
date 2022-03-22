@@ -15,7 +15,7 @@ In another shell,
 ```
 >> source ~/catkin_ws/devel/setup.bash
 >> rosrun gazebo_ros spawn_model -file `rospack find pendulum_tutorial`/urdf/pendulum.urdf -urdf -model pendulum
->> rosrun gazebo_ros spawn_model -file `rospack find pendulum_tutorial`/urdf/pendulum_horizon.urdf -urdf -model pendulum_ horizon
+>> rosrun gazebo_ros spawn_model -file `rospack find pendulum_tutorial`/urdf/pendulum_horizon.urdf -urdf -model pendulum_horizon
 
 ```
 In another shell,
