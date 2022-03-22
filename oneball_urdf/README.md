@@ -6,7 +6,7 @@ In a shell,
 ```
 >> cd ~/catkin_ws
 >> catkin_make
->> source ./devel/setup.bash
+>> source ~/catkin_ws/devel/setup.bash
 >> roscore
 ```
 In another shell,
@@ -15,6 +15,7 @@ In another shell,
 ```
 In another shell,
 ```
+>> source ~/catkin_ws/devel/setup.bash
 >> rosrun gazebo_ros spawn_model -file `rospack find oneball_urdf`/urdf/oneball.urdf -urdf -z 1 -model oneball
 ```
 In another shell,
