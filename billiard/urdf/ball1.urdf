@@ -23,11 +23,9 @@
         <child link="base_link_inertia"/>
         <origin rpy="0 0 0" xyz="0 0 0"/>
     </joint>
-
-<gazebo reference="base_link">
-	<material>
-	red/three
-	</material>
-</gazebo>
-
+    <gazebo reference="base_link">
+        <material>
+            red/three
+        </material>
+    </gazebo>
 </robot>
