@@ -6,6 +6,7 @@ In a shell,
 ```
 >> cd ~/catkin_ws
 >> catkin_make
+>> source ./devel/setup.bash
 >> roscore
 ```
 In another shell,
