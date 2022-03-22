@@ -26,5 +26,5 @@ Loading minigames with ball and pin objects and fences
 We can see more sophiscated collision works even with meshed objects
 
 ### Week 5. pendulum
-Loading vertical and horizon pendulums to see their swing motions
+Loading vertical and horizon pendulums to see their swing motions  
 We can apply apply torque to a joint of pendulums
