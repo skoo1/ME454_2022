@@ -16,3 +16,4 @@ We can see the collision and friction works in Gazebo
 Loading minigames with ball and pin objects and fences  
 We can see more sophiscated collision works even with meshed objects
 
+### Week 5. pendulum
