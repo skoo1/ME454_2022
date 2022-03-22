@@ -9,7 +9,7 @@ In a shell,
 ```
 In another shell,
 ```
->>roslaunch gazebo_ros empty_world.launch
+>> roslaunch gazebo_ros empty_world.launch
 ```
 In another shell,
 ```
