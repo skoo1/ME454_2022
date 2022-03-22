@@ -7,10 +7,12 @@ In a shell,
 >> cd ~/catkin_ws
 >> export GAZEBO_RESOURCE_PATH=~/catkin_ws/src/bowling:$GAZEBO_RESOURCE_PATH
 >> catkin_make
+>> source ~/catkin_ws/devel/setup.bash
 >> roscore
 ```
 In another shell,
 ```
+>> source ~/catkin_ws/devel/setup.bash
 >> roslaunch bowling makeBowling.launch
 ```
 In another shell,
