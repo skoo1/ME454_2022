@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
+    <env name="GAZEBO_RESOURCE_PATH" value="$(find billiard)/media/materials"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find billiard)/world/billiard.world"/>
     </include>
