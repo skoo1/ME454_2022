@@ -33,6 +33,6 @@ We can apply apply torque to a joint of pendulums
 ### Week 6-1 . oneball_topic
 with oneball_urdf node, we can see ball's position with subscriber node
   
-### Week 6-1 . oneball_topic, massAndInertia
+### Week 6-2 . oneball_topic, massAndInertia
 Loading box for translation and rotation to see their simple physics.  
 We can apply apply force and torque to box  
