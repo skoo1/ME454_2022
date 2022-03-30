@@ -7,7 +7,29 @@ project(massAndInertia)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+
+find_package(catkin REQUIRED COMPONENTS
+  gazebo_msgs
+  roscpp
+  rospy
+  std_msgs
+  message_generation
+)
+## Declare ROS messages and services
+
+generate_messages(
+   DEPENDENCIES
+   gazebo_msgs
+   std_msgs
+ )
+ 
+ ## Set the include directory.
+include_directories(${catkin_INCLUDE_DIRS})
+
+
+add_executable(kinematics_listener src/listener.cpp)
+target_link_libraries(kinematics_listener ${catkin_LIBRARIES})
+add_dependencies(kinematics_listener massAndInertia_generate_messages_cpp)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
