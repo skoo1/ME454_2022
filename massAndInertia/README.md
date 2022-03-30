@@ -40,3 +40,10 @@ In another shell,
 
 ```
 to apply Force with time duration
+
+
+3. To check Kinematics.
+```
+>> rosrun massAndInertia kinematics_listener
+
+```
