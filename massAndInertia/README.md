@@ -21,7 +21,7 @@ In another shell,
 ```
 In another shell,
 ```
->> rosservice call /gazebo/apply_body_wrench "{body_name: 'box_translation::link_box', wrench: { force: { x: 0, y: -1 , z: 0 } }, start_time: {secs: 0, nsecs: 0}, duration: {secs: 2, nsecs: 0}"
+>> rosservice call /gazebo/apply_body_wrench "{body_name: 'box_translation::link_box', wrench: { force: { x: 0, y: -1 , z: 0 } }, start_time: {secs: 0, nsecs: 0}, duration: {secs: 2, nsecs: 0}}"
 ```
 to apply Force with time duration,  
 
