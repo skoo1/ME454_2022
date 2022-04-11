@@ -24,6 +24,9 @@ In another shell,
 In another shell,
 ```
 >> rosrun gazebo_ros spawn_model -file `rospack find gazebo_energy_tutorial`/sdf/oneBouncyBall.sdf -sdf -z 5 -model ball
+or
+>> rosrun gazebo_ros spawn_model -file `rospack find gazebo_energy_tutorial`/urdf/oneBouncyBall.urdf -urdf -z 5
+ -model ball
 ```
 to simulate the elastic ground world and spawn the bouncy ball.
 
