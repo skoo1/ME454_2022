@@ -17,7 +17,6 @@ Make gazebo knows we are using custom world file and models and their location.
 
 1. Bouncy ball simulation
 
-In another shell,
 ```
 >> roslaunch gazebo_energy_tutorial empty_world_elastic.launch
 ```
