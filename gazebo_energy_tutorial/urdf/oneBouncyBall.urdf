@@ -33,7 +33,6 @@
   </joint>
   
   <gazebo reference="base_link">
-    <maxVel>0.0</maxVel>
     <collision name='base_link_collision'>
       <surface>
         <bounce>
