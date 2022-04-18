@@ -1,0 +1,10 @@
+material pinewood {
+    technique {
+        pass {
+            texture_unit {
+                texture pinewood.png
+                scale 1 1
+            }
+        }
+    }
+}
