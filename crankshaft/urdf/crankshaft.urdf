@@ -1,0 +1,169 @@
+<?xml version="1.0" ?>
+<robot name="crankshaft">
+  <joint name="fixed" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.1 "/>
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+  <joint name="first_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0 0 0.1 "/>
+    <axis xyz="1 0 0"/>
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <!--dynamics damping="0.01"/-->
+    <dynamics damping="0.0"/>
+    <limit effort="10000" velocity="0"/>
+  </joint>
+
+  <joint name="second_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0 0 1 "/>
+    <axis xyz="1 0 0"/>
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <!--dynamics damping="0.01"/-->
+    <dynamics damping="0.00"/>
+    <limit effort="10000" velocity="0"/>
+  </joint>
+
+  <joint name="third_joint" type="continuous">
+    <origin rpy="0 0 0" xyz="0 0 4"/>
+    <axis xyz="1 0 0"/>
+    <parent link="link_2"/>
+    <child link="link_box"/>
+    <!--dynamics damping="0.01"/-->
+    <dynamics damping="0.0"/>
+    <limit effort="10000" velocity="0"/>
+  </joint>
+
+  <joint name="shaft_joint" type="prismatic">
+    <origin rpy="0 0 0" xyz="0 0 0.25"/>
+    <axis xyz="0 1 0"/>
+    <parent link="link_box"/>
+    <child link="ground"/>
+    <!--dynamics damping="0.01"/-->
+    <dynamics damping="0.00"/>
+    <limit effort="10000" velocity="0"/>
+  </joint>
+  
+  <link name="world"/>
+  <link name="ground">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 0"/>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0 0"/>
+      <geometry>
+        <box size="1 1 0.1"/>
+      </geometry>
+
+    </collision>
+  </link>
+
+  <link name="base_link">
+    <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 0.05"/>
+      <geometry>
+        <box size="0.25 0.25 0.25"/>
+      </geometry>
+    </visual>
+
+  </link>
+  
+  <link name="link_1">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 0.5"/>
+      <geometry>
+        <box size="0.1 0.2 1"/>
+      </geometry>
+    </visual>
+
+  </link>
+
+  <link name="link_2">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 1"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 2"/>
+      <geometry>
+        <box size="0.1 0.2 4"/>
+      </geometry>
+    </visual>
+
+  </link>
+  
+  <link name="link_box">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.27083333333" ixy="0.0" ixz="0.0" iyy="0.27083333333" iyz="0.0" izz="0.27083333333"/>
+    </inertial>
+    
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 0"/>
+      <geometry>
+        <box size="0.5 0.5 0.5"/>
+      </geometry>
+    </visual>
+
+  </link>
+ <gazebo reference="ground">
+   <material>Gazebo/Black</material>
+ </gazebo>
+ <gazebo reference="link_1">
+   <material>Gazebo/Green</material>
+ </gazebo>
+ <gazebo reference="link_2">
+   <material>Gazebo/Blue</material>
+ </gazebo>
+ <gazebo reference="link_box">
+   <material>Gazebo/Red</material>
+ </gazebo>
+ <gazebo reference="ground">
+    <collision name='ground_collision'>
+      <surface>
+        <contact>
+          <ode>
+          <kp>5e+10</kp>
+          <kd>0</kd>
+          <max_vel>0</max_vel>
+          </ode>
+        </contact>
+        <friction>
+          <ode>
+          <mu>0</mu>
+          <mu2>0</mu2>
+          <fdir1>1 0 0</fdir1>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+ </gazebo>
+</robot>
+
