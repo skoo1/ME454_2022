@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<robot name="cube">
+    <link name="base_link">
+    <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.05208" ixy="0.0" ixz="0.0" iyy="0.05208" iyz="0.0" izz="0.05208"/>
+    </inertial>
+    
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 0.0"/>
+      <geometry>
+        <box size="0.25 0.25 0.25"/>
+      </geometry>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0 0.0"/>
+      <geometry>
+        <box size="0.25 0.25 0.25"/>
+      </geometry>
+    </collision>
+
+  </link>
+ <gazebo reference="base_link">
+    <collision name='base_link_collision'>
+      <surface>
+        <contact>
+          <ode>
+          <kp>5e+10</kp>
+          <kd>0</kd>
+          <max_vel>0</max_vel>
+          </ode>
+        </contact>
+        <friction>
+          <ode>
+          <mu>0.2</mu>
+          <mu2>0.2</mu2>
+          <fdir1>0.70710678118 0.70710678118 0</fdir1>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+ </gazebo>
+</robot>
+
+<!-- rostopic pub -1 /gazebo/set_model_state gazebo_msgs/ModelState '{model_name: cube1, pose: {position: {x: 0, y: 0, z: 0.25}, orientation: {x: 0, y: 0, z: 0, w: 1}}, twist: {linear: {x: 5, y: 0, z: 0}, angular: { x: 0, y: 0, z: 0}}, reference_frame: world}' -->
+<!-- rosrun gazebo_ros spawn_model -file `rospack find crankshaft`/urdf/friction_cube_fdir.urdf -urdf -z 0.25 -model cube1 -->
+<!-- rostopic pub -1 /gazebo/set_model_state gazebo_msgs/ModelState '{model_name: cube2, pose: {position: {x: 0, y: 1, z: 0.125}, orientation: {x: 0, y: 0, z: 0, w: 1}}, twist: {linear: {x: 5, y: 0, z: 0}, angular: { x: 0, y: 0, z: 0}}, reference_frame: world}'-->

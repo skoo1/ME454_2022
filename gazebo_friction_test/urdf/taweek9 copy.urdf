@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!-- pi 3.14159265359 1.57079632679-->
+<robot name="urdf_test">
+  <joint name="fixed" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.5 "/>
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+  <joint name="first_joint" type="continuous">
+    <origin rpy="0.7854 1.570796 0.7854" xyz="0.5 1 0.7 "/>
+    <axis xyz="0 0 1"/>
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <dynamics damping="0.0"/>
+    <limit effort="10000" velocity="0"/>
+  </joint>
+
+  <joint name="second_joint" type="continuous">
+    <origin rpy="0 1.5707963 0" xyz="0.5 0.3 0.1 "/>
+    <axis xyz="0 0 1"/>
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <dynamics damping="0.00"/>
+    <limit effort="10000" velocity="0"/>
+  </joint>
+
+  <joint name="third_joint" type="prismatic">
+    <origin rpy="-1.570796 0 0" xyz="0 0.4 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="link_2"/>
+    <child link="link_box"/>
+    <dynamics damping="0.0"/>
+    <limit effort="1000.0" lower="0" upper="0.15" velocity="0.5"/>
+  </joint>
+
+  <link name="base_link">
+  </link>
+  
+  <link name="link_1">
+  </link>
+
+  <link name="link_2">
+  </link>
+  
+  <link name="link_box">
+  </link>
+</robot>
+
+<!-- roslaunch urdf_tutorial display.launch model:=`rospack find gazebo_friction_test`/urdf/crankshaft_nolink.urdf -->
