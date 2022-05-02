@@ -8,7 +8,7 @@
   </joint>
 
   <joint name="first_joint" type="continuous">
-    <origin rpy="0.7854 1.570796 0.7854" xyz="0.5 1 0.7 "/>
+    <origin rpy="0 0 0" xyz="0 0 0.5 "/>
     <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="link_1"/>
@@ -17,8 +17,8 @@
   </joint>
 
   <joint name="second_joint" type="continuous">
-    <origin rpy="0 1.5707963 0" xyz="0.5 0.3 0.1 "/>
-    <axis xyz="0 0 1"/>
+    <origin rpy="0 0 0" xyz="0 0 0.1 "/>
+    <axis xyz="0 1 0"/>
     <parent link="link_1"/>
     <child link="link_2"/>
     <!--dynamics damping="0.01"/-->
@@ -28,7 +28,7 @@
 
   <joint name="third_joint" type="continuous">
     <origin rpy="0 0 0" xyz="0 0 0.2"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="1 0 0"/>
     <parent link="link_2"/>
     <child link="link_box"/>
     <dynamics damping="0.0"/>
@@ -38,34 +38,9 @@
   <link name="world">
   </link>
   <link name="base_link">
-      <inertial>
-      <mass value="5"/>
-      <origin rpy="0 0 0" xyz="0.25 0.5 0.35"/>
-      <inertia ixx="0.6208" ixy="0.0" ixz="0.0" iyy="0.30833" iyz="0.0" izz="0.5208"/>
-    </inertial>
-
-    <visual>
-      <origin rpy="0 0 0" xyz="0.25 0.5 0.35"/>
-      <geometry>
-        <box size="0.5 1 0.7"/>
-      </geometry>
-    </visual>
   </link>
   
   <link name="link_1">
-    <inertial>
-      <mass value="1"/>
-      <origin rpy="0 0 0" xyz="0.25 0.25 0.15"/>
-      <inertia ixx="0.028333" ixy="0.0" ixz="0.0" iyy="0.028333" iyz="0.0" izz="0.04167"/>
-    </inertial>
-
-    <visual>
-      <origin rpy="0 0 0" xyz="0.25 0.25 0.15"/>
-      <geometry>
-        <box size="0.5 0.5 0.3"/>
-        <!-- <cylinder length="0.11" radius="0.5"/> -->
-      </geometry>
-    </visual>
   </link>
 
   <link name="link_2">
