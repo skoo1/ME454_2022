@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<robot name="vibration">
+  <joint name="fixed" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.1 "/>
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+  <joint name="first_joint" type="prismatic">
+    <origin rpy="0 0 0" xyz="0 0.05 0.0 "/>
+    <axis xyz="0 1 0"/>
+    <parent link="base_link"/>
+    <child link="link_box"/>
+    <!--dynamics damping="0.01"/-->
+    <dynamics damping="0.05"/>
+    <limit effort="10000" velocity="0"/>
+  </joint>
+
+  <link name="world"/>
+
+  <link name="base_link">
+    <inertial>
+      <mass value="5"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 0.0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="link_box">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.27083333333" ixy="0.0" ixz="0.0" iyy="0.27083333333" iyz="0.0" izz="0.27083333333"/>
+    </inertial>
+    
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </visual>
+  </link>
+
+    <gazebo reference="link_box">
+    <material>Gazebo/Red</material>
+    </gazebo>
+</robot>
+
