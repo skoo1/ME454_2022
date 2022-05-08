@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+
+<robot name="two_wheel_robot">
+  <link name="base_dummy">
+  </link>
+
+  <joint name="base_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_dummy"/>
+    <child link="Chassis"/>
+  </joint>
+
+  <link name="Chassis">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.388"/>
+      <inertia ixx="0.001787" ixy="0" ixz="0" iyy="0.000979" iyz="0" izz="0.001172"/>
+    </inertial>
+    <collision>
+      <geometry>
+        <box size="0.075 0.175 0.157"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <box size = "0.075 0.175 0.157"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/> 
+    </visual>
+  </link>
+
+  <link name="Right_Wheel">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.03770"/>
+      <inertia ixx="0.000013712" ixy="0" ixz="0" iyy="0.000018823" iyz="0" izz="0.000013712"/>
+    </inertial>
+    <collision>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="Right_wheel_Joint" type="continuous">
+    <parent link="Chassis"/>
+    <child link="Right_Wheel"/>
+    <origin rpy="0 0 0" xyz="-0.010 0.1075 -0.0785"/>
+    <limit effort="100000" velocity="100000"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="Left_Wheel">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.03770"/>
+      <inertia ixx="0.000013712" ixy="0" ixz="0" iyy="0.000018823" iyz="0" izz="0.000013712"/> 
+    </inertial>
+    <collision>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="Left_wheel_Joint" type="continuous">
+    <parent link="Chassis"/>
+    <child link="Left_Wheel"/>
+    <origin rpy="0 0 0" xyz="-0.010 -0.1075 -0.0785"/>
+    <limit effort="100000" velocity="100000"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+</robot>
+
