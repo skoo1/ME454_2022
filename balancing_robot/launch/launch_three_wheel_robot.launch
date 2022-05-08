@@ -5,7 +5,7 @@
         <arg name="world_name" value="$(find balancing_robot)/world/midterm2022.world"/>
     </include>
 
-    <param name = "robot_description" command = "cat '$(find balancing_robot)/urdf/two_wheel_robot.urdf'" />
+    <param name = "robot_description" command = "cat '$(find balancing_robot)/urdf/three_wheel_robot.urdf'" />
     <node name ="urdf_spawner" pkg ="gazebo_ros" type ="spawn_model" respawn ="false" output ="screen" args ="-urdf -x 0.0 -y 0.0 -z 0.1 -model balancing_robot -param robot_description" />
 
     <!-- Load joint controller configurations from YAML file to parameter server -->
