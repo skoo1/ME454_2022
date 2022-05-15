@@ -86,5 +86,88 @@
     <axis xyz="0 1 0"/>
   </joint>
 
+  <gazebo reference="Left_Wheel">
+    <mu1>0.90</mu1>
+    <mu2>0.65</mu2>
+    <kp>100000000</kp>
+    <kd>10</kd>
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="Right_Wheel">
+    <mu1>0.90</mu1>
+    <mu2>0.65</mu2>
+    <kp>100000000</kp>
+    <kd>10</kd>
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <transmission name="Left_wheel_Trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Left_wheel_Joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="Left_wheel_Motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="Right_wheel_Trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Right_wheel_Joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="Right_wheel_Motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/two_wheel_robot</robotNamespace>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+      <alwaysOn>true</alwaysOn>
+      <bodyName>Chassis</bodyName>
+      <topicName>imu</topicName>
+      <serviceName>imu_service</serviceName>
+      <gaussianNoise>0.0</gaussianNoise>
+      <rpyOffsets>0 0 0</rpyOffsets>
+      <accelDrift>0.5 0.5 0.5</accelDrift>
+      <accelGaussianNoise>0.35 0.35 0.3</accelGaussianNoise>
+      <rateDrift>0.0 0.0 0.0</rateDrift>
+      <rateGaussianNoise>0.0 0.0 0.0</rateGaussianNoise>
+      <headingDrift>0.0</headingDrift>
+      <headingGaussianNoise>0.0</headingGaussianNoise>
+      <updateRate>0</updateRate>
+    </plugin>
+  </gazebo>
+
+  <!--
+  <gazebo reference="Chassis">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>Chassis</bodyName>
+        <updateRateHZ>100.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>Chassis</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+  -->
 </robot>
 
