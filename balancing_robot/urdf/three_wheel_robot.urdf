@@ -143,21 +143,21 @@
   <gazebo reference="Left_Wheel">
     <mu1>0.90</mu1>
     <mu2>0.65</mu2>
-    <kp>1000</kp>
+    <kp>100000000</kp>
     <kd>10</kd>
     <material>Gazebo/Red</material>
   </gazebo>
   <gazebo reference="Right_Wheel">
     <mu1>0.90</mu1>
     <mu2>0.65</mu2>
-    <kp>1000</kp>
+    <kp>100000000</kp>
     <kd>10</kd>
     <material>Gazebo/Green</material>
   </gazebo>
   <gazebo reference="Front_Wheel">
     <mu1>0.90</mu1>
     <mu2>0.65</mu2>
-    <kp>1000</kp>
+    <kp>100000000</kp>
     <kd>10</kd>
     <material>Gazebo/Blue</material>
   </gazebo>
