@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<robot name="scara_model">
+  <link name="world"/>
+  <link name="base_link">
+    <inertial>
+      <mass value="50"/>
+      <origin rpy="0 0 0" xyz="0 0 0.15"/>
+      <inertia ixx="0.3" ixy="-0.0" ixz="-0.0" iyy="0.3" iyz="0.0" izz="0.1"/>
+    </inertial>
+
+  </link>
+
+  <link name="link_1">
+    <inertial>
+      <mass value="21.2"/>
+      <origin rpy="0 0 0" xyz="0.107357788 0.000253788 0.024107821"/>
+      <inertia ixx="0.0297811" ixy="-0.0001062" ixz="-0.0102375" iyy="0.2059755" iyz="0.0001672" izz="0.2219476"/>
+    </inertial>
+  </link>
+
+  <link name="link_2">
+    <inertial>
+      <mass value="57.72"/>
+      <origin rpy="0 0 0" xyz="0.0991459 -0.0001416 0.0298107"/>
+      <inertia ixx="0.2178148" ixy="-0.0004803" ixz="0.0647122" iyy="0.6230173" iyz="0.0002187" izz="0.5150710"/>
+    </inertial>
+  </link>
+
+  <link name="link_3">
+    <inertial>
+      <mass value="0.85770"/>
+      <origin rpy="0 0 0" xyz="0.002224 -0.000282 0.044319"/>
+      <inertia ixx="0.0129247" ixy="0.0" ixz="0.0" iyy="0.0129255" iyz="0.0" izz="0.0001278"/>
+    </inertial>
+  </link>
+  
+  <link name="end" />
+
+  <joint name="joint1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <origin xyz="0 0 0.301"/>
+    <axis xyz="0 0 1" />
+    <limit effort="300" velocity="0.1" lower="-1.57" upper="1.57"/>
+  </joint>
+
+  <joint name="joint2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <origin xyz="0.225 0 0.100"/>
+    <axis xyz="0 0 1" />
+    <limit effort="300" velocity="0.1" lower="-1" upper="1"/>
+  </joint>
+
+  <joint name="joint3" type="prismatic">
+    <parent link="link_2"/>
+    <child link="link_3"/>
+    <origin xyz="0.225 0 0"/>
+    <axis xyz="0 0 1" />
+    <limit effort="300" velocity="0.1" lower="-0.205" upper="0"/>
+  </joint>
+
+  <joint name="joint4" type="revolute">
+    <parent link="link_3"/>
+    <child link="end"/>
+    <origin xyz="0 0 -0.194"/>
+    <axis xyz="0 0 1" />
+    <limit effort="300" velocity="0.1" lower="-4.71" upper="4.71"/>
+  </joint>
+
+  <joint name="world_to_baselink" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+</robot>
