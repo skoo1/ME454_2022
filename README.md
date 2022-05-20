@@ -6,8 +6,11 @@
 
 ### Installation
 ```
+>> sudo apt update
+>> sudo apt install ros-noetic-ros-control ros-noetic-ros-controllers
 >> cd ~/catkin_ws/src
-### remove all files in ~/catkin_ws/src before executing the next command
+# remove all files in ~/catkin_ws/src before executing the following command
+# not the dot "." at the end of the command
 >> git clone https://github.com/skoo1/ME454_2022.git .
 >> cd ~/catkin_ws
 >> catkin_make
