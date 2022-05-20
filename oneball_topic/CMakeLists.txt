@@ -16,14 +16,14 @@ find_package(catkin REQUIRED COMPONENTS
 )
 ## Declare ROS messages and services
 
-generate_messages(
-   DEPENDENCIES
-   gazebo_msgs
-   std_msgs
- )
+# generate_messages(
+#   DEPENDENCIES
+#   gazebo_msgs
+#   std_msgs
+# )
 add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
-add_dependencies(listener oneball_topic_generate_messages_cpp)
+# add_dependencies(listener oneball_topic_generate_messages_cpp)
 
 
 

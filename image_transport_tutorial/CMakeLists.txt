@@ -15,7 +15,7 @@ catkin_package(
   sensor_msgs
   std_msgs
   image_transport
-  DEPENDS system_lib
+  # DEPENDS system_lib
 )
 include_directories(
   ${OpenCV_INCLUDE_DIRS}

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(massAndInertia)
+project(mass_and_inertia)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -17,11 +17,11 @@ find_package(catkin REQUIRED COMPONENTS
 )
 ## Declare ROS messages and services
 
-generate_messages(
-   DEPENDENCIES
-   gazebo_msgs
-   std_msgs
- )
+# generate_messages(
+#   DEPENDENCIES
+#   gazebo_msgs
+#   std_msgs
+# )
  
  ## Set the include directory.
 include_directories(${catkin_INCLUDE_DIRS})
@@ -29,7 +29,7 @@ include_directories(${catkin_INCLUDE_DIRS})
 
 add_executable(kinematics_listener src/listener.cpp)
 target_link_libraries(kinematics_listener ${catkin_LIBRARIES})
-add_dependencies(kinematics_listener massAndInertia_generate_messages_cpp)
+# add_dependencies(kinematics_listener mass_and_inertia_generate_messages_cpp)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
