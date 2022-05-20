@@ -1,0 +1,341 @@
+<?xml version="1.0" ?>
+
+<robot name="three_wheel_robot">
+  <link name="base_dummy">
+  </link>
+
+  <joint name="base_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_dummy"/>
+    <child link="Chassis"/>
+  </joint>
+
+  <link name="camera_rgb_optical_frame">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size = "0.05 0.05 0.05"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="camera_optical_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="camera_rgb_frame"/>
+    <child link="camera_rgb_optical_frame"/>
+  </joint>
+
+  <link name="camera_rgb_frame">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size = "0.075 0.175 0.057"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.3"/>
+    <parent link="Chassis"/>
+    <child link="camera_rgb_frame"/>
+  </joint>
+
+  <link name="base_scan">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size = "0.075 0.175 0.057"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="scan_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.5"/>
+    <parent link="Chassis"/>
+    <child link="base_scan"/>
+  </joint>
+
+  <link name="Chassis">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.388"/>
+      <inertia ixx="0.001787" ixy="0" ixz="0" iyy="0.000979" iyz="0" izz="0.001172"/>
+    </inertial>
+    <collision>
+      <geometry>
+        <box size="0.075 0.175 0.157"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <box size = "0.075 0.175 0.157"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/> 
+    </visual>
+  </link>
+
+  <link name="Right_Wheel">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.03770"/>
+      <inertia ixx="0.000013712" ixy="0" ixz="0" iyy="0.000018823" iyz="0" izz="0.000013712"/>
+    </inertial>
+    <collision>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="Right_wheel_Joint" type="continuous">
+    <parent link="Chassis"/>
+    <child link="Right_Wheel"/>
+    <origin rpy="0 0 0" xyz="-0.010 0.1075 -0.0785"/>
+    <limit effort="100000" velocity="100000"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="Left_Wheel">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.03770"/>
+      <inertia ixx="0.000013712" ixy="0" ixz="0" iyy="0.000018823" iyz="0" izz="0.000013712"/> 
+    </inertial>
+    <collision>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="Left_wheel_Joint" type="continuous">
+    <parent link="Chassis"/>
+    <child link="Left_Wheel"/>
+    <origin rpy="0 0 0" xyz="-0.010 -0.1075 -0.0785"/>
+    <limit effort="100000" velocity="100000"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="Front_body">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.151"/>
+      <inertia ixx="0.000157" ixy="0" ixz="0" iyy=".000448" iyz="0" izz=".000354"/>
+    </inertial>
+    <collision>
+      <geometry>
+        <box size="0.160 0.050 0.100"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <box size = "0.160 0.050 0.100"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="Front_body_Joint" type="fixed">
+    <parent link="Chassis"/>
+    <child link="Front_body"/>
+    <origin rpy="0 0 0" xyz="0.1175 0.0 -0.0285"/>
+  </joint>
+
+  <link name="Front_Wheel">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.03770"/>
+      <inertia ixx="0.000013712" ixy="0" ixz="0" iyy="0.000018823" iyz="0" izz="0.000013712"/>
+    </inertial>
+    <collision>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </collision>
+    <visual>
+      <geometry>
+        <cylinder length="0.037" radius="0.0316"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="Front_wheel_Joint" type="continuous">
+    <parent link="Chassis"/>
+    <child link="Front_Wheel"/>
+    <origin rpy="0 0 0" xyz="0.197 0.0 -0.0785"/>
+    <limit effort="100000" velocity="100000"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <gazebo reference="Left_Wheel">
+    <mu1>0.90</mu1>
+    <mu2>0.65</mu2>
+    <kp>100000000</kp>
+    <kd>10</kd>
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="Right_Wheel">
+    <mu1>0.90</mu1>
+    <mu2>0.65</mu2>
+    <kp>100000000</kp>
+    <kd>10</kd>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <gazebo reference="Front_Wheel">
+    <mu1>0.90</mu1>
+    <mu2>0.65</mu2>
+    <kp>100000000</kp>
+    <kd>10</kd>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <transmission name="Left_wheel_Trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Left_wheel_Joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="Left_wheel_Motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="Right_wheel_Trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Right_wheel_Joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="Right_wheel_Motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="Front_wheel_Trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Front_wheel_Joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="Front_wheel_Motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <gazebo reference="camera_rgb_frame">
+  <sensor type="depth" name="realsense_R200">
+  <always_on>true</always_on>
+  <visualize>false</visualize>
+  <camera>
+    <horizontal_fov>1.3439</horizontal_fov>
+    <image>
+      <width>1920</width>
+      <height>1080</height>
+      <format>R8G8B8</format>
+    </image>
+    <depth_camera></depth_camera>
+    <clip>
+      <near>0.03</near>
+      <far>100</far>
+    </clip>
+  </camera>
+    <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+      <baseline>0.2</baseline>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>30.0</updateRate>
+      <cameraName>camera</cameraName>
+      <frameName>camera_rgb_optical_frame</frameName>
+      <imageTopicName>rgb/image_raw</imageTopicName>
+      <depthImageTopicName>depth/image_raw</depthImageTopicName>
+      <pointCloudTopicName>depth/points</pointCloudTopicName>
+      <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+      <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+      <pointCloudCutoff>0.4</pointCloudCutoff>
+      <hackBaseline>0.07</hackBaseline>
+      <distortionK1>0.0</distortionK1>
+      <distortionK2>0.0</distortionK2>
+      <distortionK3>0.0</distortionK3>
+      <distortionT1>0.0</distortionT1>
+      <distortionT2>0.0</distortionT2>
+      <CxPrime>0.0</CxPrime>
+      <Cx>0.0</Cx>
+      <Cy>0.0</Cy>
+      <focalLength>0</focalLength>
+      <hackBaseline>0</hackBaseline>
+    </plugin>
+  </sensor>
+  </gazebo>
+
+  <gazebo reference="base_scan">
+  <material>Gazebo/FlatBlack</material>
+  <sensor type="ray" name="lds_lfcd_sensor">
+  <pose>0 0 0 0 0 0</pose>
+  <visualize>false</visualize>
+  <update_rate>5</update_rate>
+  <ray>
+  <scan>
+    <horizontal>
+      <samples>360</samples>
+      <resolution>1</resolution>
+      <min_angle>0.0</min_angle>
+      <max_angle>6.28319</max_angle>
+    </horizontal>
+  </scan>
+    <range>
+      <min>0.120</min>
+      <max>3.5</max>
+      <resolution>0.015</resolution>
+    </range>
+    <noise>
+      <type>gaussian</type>
+      <mean>0.0</mean>
+      <stddev>0.01</stddev>
+    </noise>
+  </ray>
+    <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
+      <topicName>scan</topicName>
+      <frameName>base_scan</frameName>
+    </plugin>
+  </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/three_wheel_robot</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>
+
