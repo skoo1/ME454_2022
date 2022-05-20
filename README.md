@@ -1,7 +1,7 @@
 # ME454 Dynamics System Programming 
 #### Lecturer : Prof. Seungbum Koo (skoo at kaist.ac.kr)  
 #### TA : Jeongseok Oh (dhwjdtjr0 at kaist.ac.kr) and Beomsu Shin (sbs0323 at kaist.ac.kr)  
-
+### The packages are tested in WSL Ubuntu 20.04 with ROS Noetic
 ## Packages for TA sessions  
 
 ### Installation
