@@ -7,6 +7,7 @@
 ### Installation
 ```
 >> cd ~/catkin_ws/src
+### remove all files in ~/catkin_ws/src before executing the next command
 >> git clone https://github.com/skoo1/ME454_2022.git .
 >> cd ~/catkin_ws
 >> catkin_make
