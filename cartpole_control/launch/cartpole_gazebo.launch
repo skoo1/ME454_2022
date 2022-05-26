@@ -1,0 +1,15 @@
+<?xml version ="1.0" encoding = "UTF-8"?>
+
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="true"/>
+    </include>
+
+    <param name="robot_description" textfile='$(find cartpole_gazebo)/urdf/cartpole_v1.urdf' />
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -param robot_description -model cartpole -x 0 -y 0 -z 0 -R 0 -P 0 -Y 0" />
+
+    <rosparam file="$(find cartpole_gazebo)/config/joint_position_control.yaml" command="load" />
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller pole_cart_position_controller" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen" />
+</launch>

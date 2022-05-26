@@ -1,0 +1,9 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 120
+
+pole_cart_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: stand_cart
+  pid: {p: 100, i: 0.01, d: 10}
+

@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<robot name="cartpole">
+
+  <link name="world"/>
+
+  <link name="stand">
+    <inertial>
+      <origin xyz="0 0 0.078463" rpy="0 0 0" />
+      <mass value="1.0356" />
+      <inertia ixx="0.00182" ixy="0" ixz="0" iyy="0.09795" iyz="0" izz="0.09627" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://cartpole_gazebo/meshes/stand.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://cartpole_gazebo/meshes/stand.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="grounding" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"></origin>
+    <parent link="world"/>
+    <child link="stand"/>
+  </joint>
+
+  <link name="cart">
+    <inertial>
+      <origin xyz="0 0 0.00084171" rpy="0 0 0" />
+      <mass value="0.11377" />
+      <inertia ixx="0.00004" ixy="0" ixz="0" iyy="0.00011" iyz="0" izz="0.00011" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://cartpole_gazebo/meshes/cart.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://cartpole_gazebo/meshes/cart.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="stand_cart" type="prismatic">
+    <origin xyz="0 0.0 0.150" rpy="0 0 0"></origin>
+    <parent link="stand"></parent>
+    <child link="cart"></child>
+    <axis xyz="1 0 0"></axis>
+    <limit effort="30" lower="-0.5" upper="0.5" velocity="7.0"></limit>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="pole">
+    <inertial>
+      <origin xyz="0 0 0.25293" rpy="0 0 0" />
+      <mass value="0.23243" />
+      <inertia ixx="0.004387" ixy="0" ixz="0" iyy="0.004387" iyz="0" izz="0.000018" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0" />
+      <geometry>
+        <mesh filename="package://cartpole_gazebo/meshes/pole.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="1.571 0 0" />
+      <geometry>
+        <mesh filename="package://cartpole_gazebo/meshes/pole.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="cart_pole" type="continuous"> 
+    <origin xyz="0 0 0.030" rpy="0 0 0" />
+    <parent link="cart" />
+    <child link="pole" />
+    <axis xyz="0 -1 0" />
+    <limit effort="30" lower="-0.785398" upper="0.785398" velocity="7.0" />
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+
+  <transmission name="stand_cart_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="stand_cart">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="stand_cart_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="cart_pole_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="cart_pole">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="cart_pole_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so" />
+  </gazebo>
+
+</robot>
