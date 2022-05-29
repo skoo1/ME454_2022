@@ -13,18 +13,18 @@
   <link name="Chassis">
     <inertial>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.388"/>
-      <inertia ixx="0.001787" ixy="0" ixz="0" iyy="0.000979" iyz="0" izz="0.001172"/>
+      <mass value="0.7760"/>
+      <inertia ixx="0.008356" ixy="0" ixz="0" iyy="0.006740" iyz="0" izz="0.002344"/>
     </inertial>
     <collision>
       <geometry>
-        <box size="0.075 0.175 0.157"/>
+        <box size="0.075 0.175 0.314"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
     <visual>
       <geometry>
-        <box size = "0.075 0.175 0.157"/>
+        <box size = "0.075 0.175 0.314"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/> 
     </visual>
@@ -53,7 +53,7 @@
   <joint name="Right_wheel_Joint" type="continuous">
     <parent link="Chassis"/>
     <child link="Right_Wheel"/>
-    <origin rpy="0 0 0" xyz="-0.010 0.1075 -0.0785"/>
+    <origin rpy="0 0 0" xyz="0.0 0.1075 -0.157"/>
     <limit effort="100000" velocity="100000"/>
     <axis xyz="0 1 0"/>
   </joint>
@@ -81,7 +81,7 @@
   <joint name="Left_wheel_Joint" type="continuous">
     <parent link="Chassis"/>
     <child link="Left_Wheel"/>
-    <origin rpy="0 0 0" xyz="-0.010 -0.1075 -0.0785"/>
+    <origin rpy="0 0 0" xyz="0.0 -0.1075 -0.157"/>
     <limit effort="100000" velocity="100000"/>
     <axis xyz="0 1 0"/>
   </joint>
@@ -91,13 +91,16 @@
     <mu2>0.65</mu2>
     <kp>100000000</kp>
     <kd>10</kd>
+    <dynamics damping="10.0" friction="0.0"/>
     <material>Gazebo/Red</material>
   </gazebo>
+
   <gazebo reference="Right_Wheel">
     <mu1>0.90</mu1>
     <mu2>0.65</mu2>
     <kp>100000000</kp>
     <kd>10</kd>
+    <dynamics damping="10.0" friction="0.0"/>
     <material>Gazebo/Green</material>
   </gazebo>
 
@@ -129,6 +132,7 @@
     </plugin>
   </gazebo>
 
+  <!--
   <gazebo>
     <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
       <alwaysOn>true</alwaysOn>
@@ -143,6 +147,7 @@
       <updateRate>100</updateRate>
     </plugin>
   </gazebo>
+  -->
 
 </robot>
 

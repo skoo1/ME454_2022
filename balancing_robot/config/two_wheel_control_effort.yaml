@@ -1,0 +1,13 @@
+two_wheel_robot:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 100
+
+  # Effort Controllers ---------------------------------------
+  left_wheel_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: Left_wheel_Joint
+  right_wheel_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: Right_wheel_Joint
