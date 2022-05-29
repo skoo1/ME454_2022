@@ -12,7 +12,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.5708 0 0" />
       <geometry>
-        <mesh filename="package://cartpole_gazebo/meshes/stand.stl" />
+        <mesh filename="package://cartpole_control/meshes/stand.stl" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -21,7 +21,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="1.5708 0 0" />
       <geometry>
-        <mesh filename="package://cartpole_gazebo/meshes/stand.stl" />
+        <mesh filename="package://cartpole_control/meshes/stand.stl" />
       </geometry>
     </collision>
   </link>
@@ -41,7 +41,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.5708 0 0" />
       <geometry>
-        <mesh filename="package://cartpole_gazebo/meshes/cart.stl" />
+        <mesh filename="package://cartpole_control/meshes/cart.stl" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -50,7 +50,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="1.5708 0 0" />
       <geometry>
-        <mesh filename="package://cartpole_gazebo/meshes/cart.stl" />
+        <mesh filename="package://cartpole_control/meshes/cart.stl" />
       </geometry>
     </collision>
   </link>
@@ -73,7 +73,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.5708 0 0" />
       <geometry>
-        <mesh filename="package://cartpole_gazebo/meshes/pole.stl" />
+        <mesh filename="package://cartpole_control/meshes/pole.stl" />
       </geometry>
       <material name="">
         <color rgba="0.79216 0.81961 0.93333 1" />
@@ -82,7 +82,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="1.571 0 0" />
       <geometry>
-        <mesh filename="package://cartpole_gazebo/meshes/pole.stl" />
+        <mesh filename="package://cartpole_control/meshes/pole.stl" />
       </geometry>
     </collision>
   </link>

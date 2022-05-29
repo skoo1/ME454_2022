@@ -3,30 +3,18 @@ import rospy
 import random
 import time
 import math
-import csv
+
 from std_srvs.srv import Empty
+from sensor_msgs.msg import JointState
+from std_msgs.msg import Float64
 from gazebo_msgs.srv import SetModelConfiguration
 
-from control_msgs.msg import JointControllerState
-from sensor_msgs.msg import JointState
-from gazebo_msgs.msg import LinkStates
-from gazebo_msgs.srv import SetLinkState
-from gazebo_msgs.msg import LinkState
-from std_msgs.msg import Float64
-from std_msgs.msg import String
-from sensor_msgs.msg import Joy
-
-ITERATION = 2000
-
 pubCartPosition = rospy.Publisher('/pole_cart_position_controller/command', Float64, queue_size=1)
-pubJointStates = rospy.Publisher('/joint_states', JointState, queue_size=1)
 
 reset_world = rospy.ServiceProxy('/gazebo/reset_world', Empty)
 reset_joints = rospy.ServiceProxy('/gazebo/set_model_configuration', SetModelConfiguration)
 unpause = rospy.ServiceProxy('/gazebo/unpause_physics', Empty)
 pause = rospy.ServiceProxy('/gazebo/pause_physics', Empty)
-set_link = rospy.ServiceProxy('/gazebo/set_link_state', SetLinkState)
-
 
 rospy.init_node('cartpole_control_script')
 rate = rospy.Rate(120)
@@ -120,7 +108,6 @@ class RobotState(object):
         self.robot_state = [self.cart_x, self.cart_x_dot, self.pole_theta, self.pole_theta_dot]
         
         self.data = None
-        self.latest_reward = 0.0
 
         self.theta_threshold = 0.21
         self.x_threshold = 0.4
@@ -134,38 +121,22 @@ robot_state = RobotState()
 
 def reset():
     rospy.wait_for_service('/gazebo/reset_world')
-
     try:
         reset_world()
     except (rospy.ServiceException) as e:
         print ('reset_world failed!')
 
-
-        # rospy.wait_for_service('/gazebo/reset_world')
     rospy.wait_for_service('/gazebo/set_model_configuration')
-
     try:
-        #reset_proxy.call()
-        # reset_world()
         reset_joints("cartpole", "robot_description", ["stand_cart", "cart_pole"], [0.0, 0.0])
-
-
     except (rospy.ServiceException) as e:
         print ('/gazebo/reset_joints service call failed')
-
+        
     rospy.wait_for_service('/gazebo/pause_physics')
-
     try:
         pause()
     except (rospy.ServiceException) as e:
         print ('rospause failed!')
-
-    # rospy.wait_for_service('/gazebo/unpause_physics')
-    
-    # try:
-    #     unpause()
-    # except (rospy.ServiceException) as e:
-    #     print "/gazebo/pause_physics service call failed"
 
     set_robot_state()
     robot_state.current_pos = 0
@@ -179,7 +150,6 @@ def set_robot_state():
 
 def take_action(action):
     rospy.wait_for_service('/gazebo/unpause_physics')
-    
     try:
         unpause()
     except (rospy.ServiceException) as e:
@@ -190,10 +160,8 @@ def take_action(action):
     else:
         robot_state.current_pos = robot_state.current_pos - 0.02
 
-    # print "publish : ", robot_state.current_pos
     pubCartPosition.publish(robot_state.current_pos)
     
-    # ['cart_pole', 'stand_cart']
     if robot_state.data == None:
         while robot_state.data is None:
             try:
@@ -216,20 +184,14 @@ def take_action(action):
         robot_state.done = False
         reward = 1
 
-    # rate.sleep()
-
     return reward, robot_state.done
 
 
 def callbackJointStates(data):
-    if len(data.velocity) > 0:
-        robot_state.cart_x_dot = data.velocity[1]
-        robot_state.pole_theta_dot = data.velocity[0]
-    else:
-        robot_state.cart_x_dot = 0.0
-        robot_state.pole_theta_dot = 0.0
     robot_state.cart_x = data.position[1]
+    robot_state.cart_x_dot = data.velocity[1]
     robot_state.pole_theta = data.position[0]
+    robot_state.pole_theta_dot = data.velocity[0]
 
     set_robot_state()
     # print ('DATA :'), data
@@ -238,7 +200,6 @@ def callbackJointStates(data):
 def listener():
     print ('listener')
     rospy.Subscriber("/joint_states", JointState, callbackJointStates)
-    
 
 
 def main():
@@ -255,14 +216,12 @@ def main():
 
     for n_epi in range(10000):
         epsilon = max(0.01, 0.08 - 0.01*(n_epi/200)) #Linear annealing from 8% to 1%
-        # s = env.reset()
         reset()
         s = np.asarray(robot_state.robot_state)
         done = False
 
         while not done:
             a = q.sample_action(torch.from_numpy(s).float(), epsilon)      
-            # s_prime, r, done, info = env.step(a)
             r, done = take_action(a)
             # print("a: %d, r: %d, robot_state: %.3f, %.3f, %.3f, %.3f" % (a, r, robot_state.pole_theta, robot_state.pole_theta_dot, robot_state.cart_x, robot_state.cart_x_dot))
             time.sleep(0.1)
@@ -282,7 +241,7 @@ def main():
         if n_epi%print_interval == 0 and n_epi != 0:
             q_target.load_state_dict(q.state_dict())
             print("n_episode :{}, score : {:.1f}, n_buffer : {}, eps : {:.1f}%".format(
-                                                            n_epi, score/print_interval, memory.size(), epsilon*100))
+                n_epi, score/print_interval, memory.size(), epsilon*100))
             score = 0.0
 
 
