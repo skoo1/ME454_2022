@@ -19,6 +19,6 @@ In another shell,
 >> python ~/catkin_ws/src/cartpole_control/src/dqn_train.py
 ```
 
-Acknowledgements
-# urdf model is brought from "https://github.com/nav74neet/ppo_gazebo_tf" and modified
-# The pytorch-based DQN RL routine is brought from "https://github.com/seungeunrho/minimalRL"
+## Acknowledgements
+### urdf model is brought from "https://github.com/nav74neet/ppo_gazebo_tf" and modified
+### The pytorch-based DQN RL routine is brought from "https://github.com/seungeunrho/minimalRL"
