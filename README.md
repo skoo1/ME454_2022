@@ -50,3 +50,6 @@ We can apply apply force and torque to box
 ### Week 12. balancing_robot
 
 ### Week 13. balancing_robot
+
+### Week 14. balancing_robot and cartpole_control
+The cartpole exampled can be trained with a reinforcement learning algorithm
