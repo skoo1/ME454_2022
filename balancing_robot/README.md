@@ -19,8 +19,8 @@ In another shell,
 >> python ~/catkin_ws/src/balancing_robot/src/dqn_train_effort.py
 ```
 
-### I could NOT train the Deep RL controller with effort controller successfully. There was a bit of training effects but it was not satisfactory.
-### When I tried to switch the effort controller to a jointvelocitycontroller (PID to effort), the urdf model behaved strangely in gazebo.
+I could NOT train the Deep RL controller with effort controller successfully. There was a bit of training effects but it was not satisfactory.  
+When I tried to switch the effort controller to a jointvelocitycontroller (PID to effort), the urdf model behaved strangely in gazebo.  
 
 
 ## Acknowledgements
