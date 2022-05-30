@@ -94,10 +94,10 @@ int main(int argc, char **argv){
     float txt_gray_lvl = 1.0 - bckgr_gray_level;
 
     // Original point cloud is white
-    pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> cloud_in_color_h (new_cloud, (int) 0 , (int) 0 , (int) 255 );
-    viewer.addPointCloud (new_cloud, cloud_in_color_h, "cloud_in_v1");
-    viewer.setCameraPosition (-3.68332, 2.94092, 5.71266, 0.289847, 0.921947, -0.256907, 0);
-    viewer.setSize (1280, 1024);  // Visualiser window size
+//     pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> cloud_in_color_h (new_cloud, (int) 0 , (int) 0 , (int) 255 );
+//     viewer.addPointCloud (new_cloud, cloud_in_color_h, "cloud_in_v1");
+//     viewer.setCameraPosition (-3.68332, 2.94092, 5.71266, 0.289847, 0.921947, -0.256907, 0);
+//     viewer.setSize (1280, 1024);  // Visualiser window size
     
     while(ros::ok()){
         ros::spinOnce();
