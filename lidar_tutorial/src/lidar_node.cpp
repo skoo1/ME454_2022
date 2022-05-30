@@ -73,7 +73,7 @@ void lidar_cb(sensor_msgs::LaserScan msg){
 
 int main(int argc, char **argv){
 
-    ros::init(argc, argv, "lidar_homework_node");
+    ros::init(argc, argv, "lidar_tutorial_node");
     ros::NodeHandle nh;
 
     ros::Subscriber sub_lidar = nh.subscribe("/scan", 1, lidar_cb);
