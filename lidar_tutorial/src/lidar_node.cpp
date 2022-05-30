@@ -82,7 +82,7 @@ int main(int argc, char **argv){
     pub = nh.advertise<pcl::PointCloud<pcl::PointXYZRGB>> (topic, queue_size);
     ros::Rate loop_rate(5);
 
-    pcl::visualization::PCLVisualizer viewer ("ICP demo");
+//     pcl::visualization::PCLVisualizer viewer ("ICP demo");
     // Create two vertically separated viewports
     // int v1 (0);
     // int v2 (1);
