@@ -40,17 +40,25 @@ with oneball_urdf node, we can see ball's position with subscriber node
   
 ### Week 6-2. oneball_topic, mass_and_inertia
 Loading box for translation and rotation to see their simple physics.  
-We can apply apply force and torque to box  
+We can apply force and torque to box  
 
-### Week 9.
+### Week 9. crankshaft  
+Loading crank shaft system with 3 bar linkage  
+we can apply torque to each joint to operate system.  
 
 ### Week 10.
 
-### Week 11. balancing_robot
+### Week 11. vibration
+Loading mass spring damper system  
+there are three types; linear, angular, multi spring-damper system.  
+we can adjust spring coeff or damping and check kinematics of mass.
 
 ### Week 12. balancing_robot
 
-### Week 13. balancing_robot
+### Week 13. sensor_robot
+Loading three_wheel robot with sensors.  
+we can add lidar sensor and camera to robot.  
+we can get data from sensor and handle it with OPENCV.  
 
 ### Week 14. balancing_robot and cartpole_control
 The cartpole exampled can be trained with a reinforcement learning algorithm
