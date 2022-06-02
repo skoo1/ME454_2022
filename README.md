@@ -1,4 +1,5 @@
-# ME454 Dynamics System Programming 
+# ME454 Dynamics System Programming
+### Department of Mechanical Engineering, KAIST, South Korea  
 #### Lecturer : Prof. Seungbum Koo (skoo at kaist.ac.kr)  
 #### TA : Jeongseok Oh (dhwjdtjr0 at kaist.ac.kr) and Beomsu Shin (sbs0323 at kaist.ac.kr)  
 ### The packages are tested in WSL Ubuntu 20.04 with ROS Noetic
